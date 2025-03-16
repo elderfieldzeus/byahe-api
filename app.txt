@@ -1,0 +1,37 @@
++------------------+       +------------------+       +------------------+
+|      User       | 1 --- M |   Itinerary     | 1 --- M |     Flight      |
+|----------------|       |----------------|       |----------------|
+| user_id (PK)   |       | itinerary_id (PK) |       | flight_id (PK)  |
+| name           |       | user_id (FK)     |       | itinerary_id (FK)|
+| email          |       | title           |       | airline         |
+| password       |       | description     |       | flight_number   |
+| preferences    |       | start_date      |       | departure_time  |
++----------------+       | end_date        |       | arrival_time    |
+                         +----------------+       | price          |
+                                                  +----------------+
+
+                         1 --- M
++------------------+       +------------------+
+|      Hotel      |       |     Activity     |
+|----------------|       |----------------|
+| hotel_id (PK)  |       | activity_id (PK) |
+| itinerary_id (FK)|       | itinerary_id (FK)|
+| name           |       | name            |
+| location       |       | location        |
+| check_in       |       | date            |
+| check_out      |       | time            |
+| price          |       | price           |
++----------------+       +----------------+
+
+                         1 --- M
++------------------+       +------------------+
+|    Document     |       |     Payment      |
+|----------------|       |----------------|
+| document_id (PK)|       | payment_id (PK) |
+| itinerary_id (FK)|       | user_id (FK)   |
+| user_id (FK)    |       | itinerary_id (FK) |
+| type           |       | amount          |
+| file_url       |       | payment_method  |
+| upload_date    |       | status          |
++----------------+       | payment_date    |
+                         +----------------+
