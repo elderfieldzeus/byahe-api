@@ -14,9 +14,9 @@ import { AuthGuard } from './guard/auth.guard';
       global: true,
       secret: JWT_SECRET,
       signOptions: {
-        expiresIn: '1h'
-      }
-    })
+        expiresIn: '1h',
+      },
+    }),
   ],
   controllers: [AuthController],
   providers: [
@@ -24,7 +24,7 @@ import { AuthGuard } from './guard/auth.guard';
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
-    }
-  ]
+    },
+  ],
 })
 export class AuthModule {}

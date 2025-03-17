@@ -12,7 +12,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Byahe')
-    .setDescription('A Smart Travel Planner that helps users Organize Itineraries, Manage Flights, Store Travel Documents, and Book Accommodations—all in one place.')
+    .setDescription(
+      'A Smart Travel Planner that helps users Organize Itineraries, Manage Flights, Store Travel Documents, and Book Accommodations—all in one place.',
+    )
     .setVersion('1.0')
     .build();
 
