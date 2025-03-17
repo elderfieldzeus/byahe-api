@@ -5,3 +5,5 @@ export const SEQUELIZE_PASSWORD = process.env.MYSQL_PASSWORD ?? '';
 export const SEQUELIZE_DATABASE = process.env.MYSQL_DATABASE ?? 'byahe_db';
 
 export const JWT_SECRET = process.env.JWT_SECRET ?? 'secretKey';
+
+export const ROW_LIMIT = 10;
