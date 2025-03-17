@@ -8,10 +8,10 @@ export class UserResponseDto {
   updatedAt: Date;
 
   constructor(user: User) {
-    this.id = user.get('id');
+    this.id = user.get('id') as number;
     this.name = user.get('name') as string;
     this.email = user.get('email') as string;
-    this.createdAt = user.get('createdAt');
-    this.updatedAt = user.get('updatedAt');
+    this.createdAt = user.get('createdAt') as Date;
+    this.updatedAt = user.get('updatedAt') as Date;
   }
 }

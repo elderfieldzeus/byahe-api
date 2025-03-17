@@ -5,7 +5,6 @@ import { CreateUserDto } from './dto/createuser.dto';
 import * as bcrypt from 'bcrypt';
 import { Sequelize } from 'sequelize-typescript';
 import { ROW_LIMIT } from 'src/lib/constants';
-import { UserResponseDto } from './dto/userresponse.dto';
 
 @Injectable()
 export class UserService {
@@ -35,6 +34,7 @@ export class UserService {
         );
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user;
 
       return result;
@@ -65,15 +65,9 @@ export class UserService {
 
   async findAllUsers(page: number) {
     const offset = ROW_LIMIT * (page - 1);
-    const users = await this.userModel.findAll({
+    return await this.userModel.findAll({
       limit: ROW_LIMIT,
       offset: offset < 0 ? 0 : offset,
     });
-
-    const usersResponse = users.map((user) => {
-      return new UserResponseDto(user);
-    });
-
-    return usersResponse;
   }
 }

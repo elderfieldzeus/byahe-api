@@ -1,6 +1,15 @@
-import { Controller, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Query,
+} from '@nestjs/common';
 import { UserService } from './user.service';
-import { SkipAuth } from 'src/auth/decorator/auth.decorator';
+import { User } from './user.model';
+import { UserResponseDto } from './dto/userresponse.dto';
 
 @Controller('user')
 export class UserController {
@@ -8,6 +17,21 @@ export class UserController {
 
   @Get()
   async getAllUsers(@Query('page', ParseIntPipe) page: number) {
-    return await this.userService.findAllUsers(page);
+    const users = await this.userService.findAllUsers(page);
+
+    const usersResponse = users.map((user) => new UserResponseDto(user));
+
+    return usersResponse;
+  }
+
+  @Get(':id')
+  async getUserById(@Param('id', ParseIntPipe) id: number) {
+    const user: User | null = await this.userService.findById(id);
+
+    if (user === null) {
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
+
+    return new UserResponseDto(user);
   }
 }

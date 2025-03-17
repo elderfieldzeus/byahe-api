@@ -1,10 +1,6 @@
-import {
-  Injectable,
-  NotFoundException,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { signInUserDto } from 'src/user/dto/signinuser.dto';
+import { SignInUserDto } from 'src/user/dto/signinuser.dto';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 
@@ -16,7 +12,7 @@ export class AuthService {
   ) {}
 
   async signIn(
-    signInUserDto: signInUserDto,
+    signInUserDto: SignInUserDto,
   ): Promise<{ access_token: string }> {
     const { email, password } = signInUserDto;
 
@@ -24,7 +20,7 @@ export class AuthService {
 
     const isPasswordCorrect = await bcrypt.compare(
       password,
-      user?.getDataValue('password') ?? '',
+      (user?.getDataValue('password') as string) ?? '',
     );
 
     if (user === null || !isPasswordCorrect) {
@@ -34,8 +30,8 @@ export class AuthService {
     }
 
     const payload = {
-      sub: user.getDataValue('id'),
-      username: user.getDataValue('email'),
+      sub: user.getDataValue('id') as number,
+      username: user.getDataValue('email') as string,
     };
 
     return {
