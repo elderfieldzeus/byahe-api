@@ -13,7 +13,7 @@ export class UserService {
     ) {}
 
     async create(user: CreateUserDto) {
-        const _user = this.findByEmail(user.email);
+        const _user = await this.findByEmail(user.email);
 
         if (_user !== null) {
             throw new HttpException('User already exists', HttpStatus.CONFLICT);
@@ -22,15 +22,15 @@ export class UserService {
         const hashPass = await bcrypt.hash(user.password, 10);
 
         try {
-            
-
             await this.sequelize.transaction(async (t) => {
-                await this.userModel.create({...user, password: hashPass}, {
+                console.log(await this.userModel.create({...user, password: hashPass}, {
                     transaction: t
-                });
-            })
+                }));
+            });
 
-            return user;
+            const { password, ...result } = user;
+
+            return result;
         }
         catch(e) {
             console.error(e);
@@ -41,16 +41,16 @@ export class UserService {
         }
     }
 
-    findById(id: number) {
-        return this.userModel.findOne({
+    async findById(id: number) {
+        return await this.userModel.findOne({
             where: {
                 id
             }
         });
     }
 
-    findByEmail(email: string) {
-        return this.userModel.findOne({
+    async findByEmail(email: string) {
+        return await this.userModel.findOne({
             where: {
                 email
             }
