@@ -1,54 +1,43 @@
-# 🌍 Travel App REST API Features  
+# Travel App REST API Features
 
-## ✅ 1. User Management 👤  
-- [x] `POST /auth/signup` – Register a new user  
-- [x] `POST /auth/login` – Authenticate user & generate token  
-- [ ] `GET /users/{user_id}` – Fetch user profile  
-- [ ] `PUT /users/{user_id}` – Update user profile/preferences  
-- [ ] `DELETE /users/{user_id}` – Delete account  
+## Authentication & User Management
+- [x] **User Registration** (`POST /auth/signup`)
+- [x] **User Login** (`POST /auth/login`)
+- [ ] **User Profile** (`GET /users/{user_id}`)
+- [ ] **Update User** (`PUT /users/{user_id}`)
 
-## ✅ 2. Itinerary Management 🗺️  
-- [ ] `POST /itineraries` – Create a new itinerary  
-- [ ] `GET /itineraries/{itinerary_id}` – Fetch itinerary details  
-- [ ] `GET /users/{user_id}/itineraries` – Get all user itineraries  
-- [ ] `PUT /itineraries/{itinerary_id}` – Update itinerary details  
-- [ ] `DELETE /itineraries/{itinerary_id}` – Delete itinerary  
+## Itinerary Management
+- [ ] **Create Itinerary** (`POST /itineraries`)
+- [ ] **Get User Itineraries** (`GET /users/{user_id}/itineraries`)
+- [ ] **Get Itinerary Details** (`GET /itineraries/{itinerary_id}`)
+- [ ] **Update Itinerary** (`PUT /itineraries/{itinerary_id}`)
+- [ ] **Delete Itinerary** (`DELETE /itineraries/{itinerary_id}`)
 
-## ✅ 3. Flight Management ✈️  
-- [ ] `GET /flights/search?origin=XXX&destination=YYY&date=YYYY-MM-DD` – Search flights  
-- [ ] `POST /flights/book` – Book a flight  
-- [ ] `GET /flights/{flight_id}` – Get flight details  
-- [ ] `DELETE /flights/{flight_id}` – Cancel flight booking  
+## Flights Management
+- [ ] **Add Flight to Itinerary** (`POST /itineraries/{itinerary_id}/flights`)
+- [ ] **Get Flights for Itinerary** (`GET /itineraries/{itinerary_id}/flights`)
+- [ ] **Update Flight Details** (`PUT /flights/{flight_id}`)
+- [ ] **Remove Flight from Itinerary** (`DELETE /flights/{flight_id}`)
 
-## ✅ 4. Hotel & Accommodation Management 🏨  
-- [ ] `GET /hotels/search?location=XXX&checkin=YYYY-MM-DD&checkout=YYYY-MM-DD` – Search hotels  
-- [ ] `POST /hotels/book` – Book a hotel  
-- [ ] `GET /hotels/{hotel_id}` – Get hotel details  
-- [ ] `DELETE /hotels/{hotel_id}` – Cancel hotel booking  
+## Hotel Booking Management
+- [ ] **Add Hotel Booking** (`POST /itineraries/{itinerary_id}/hotels`)
+- [ ] **Get Hotel Bookings for Itinerary** (`GET /itineraries/{itinerary_id}/hotels`)
+- [ ] **Update Hotel Booking** (`PUT /hotels/{hotel_id}`)
+- [ ] **Delete Hotel Booking** (`DELETE /hotels/{hotel_id}`)
 
-## ✅ 5. Activity & Transport Booking 🚗🎟️  
-- [ ] `GET /activities/search?location=XXX&date=YYYY-MM-DD` – Search activities  
-- [ ] `POST /activities/book` – Book an activity  
-- [ ] `GET /activities/{activity_id}` – Get activity details  
-- [ ] `DELETE /activities/{activity_id}` – Cancel booking  
+## Activity Management
+- [ ] **Add Activity** (`POST /itineraries/{itinerary_id}/activities`)
+- [ ] **Get Activities for Itinerary** (`GET /itineraries/{itinerary_id}/activities`)
+- [ ] **Update Activity** (`PUT /activities/{activity_id}`)
+- [ ] **Delete Activity** (`DELETE /activities/{activity_id}`)
 
-## ✅ 6. File & Document Management 📂  
-- [ ] `POST /documents/upload` – Upload travel documents  
-- [ ] `GET /documents/{document_id}` – Fetch document details  
-- [ ] `DELETE /documents/{document_id}` – Delete a document  
+## Document Management
+- [ ] **Upload Travel Document** (`POST /itineraries/{itinerary_id}/documents`)
+- [ ] **Get Travel Documents** (`GET /itineraries/{itinerary_id}/documents`)
+- [ ] **Delete Travel Document** (`DELETE /documents/{document_id}`)
 
-## ✅ 7. Payment & Transactions 💳  
-- [ ] `POST /payments` – Process a payment  
-- [ ] `GET /payments/{payment_id}` – Fetch payment details  
-- [ ] `GET /users/{user_id}/payments` – Get all user payments  
-- [ ] `DELETE /payments/{payment_id}` – Cancel a payment  
-
-## ✅ 8. Notifications & Alerts 🔔  
-- [ ] `POST /notifications` – Send a notification  
-- [ ] `GET /users/{user_id}/notifications` – Get user notifications  
-- [ ] `DELETE /notifications/{notification_id}` – Delete a notification  
-
-## ✅ 9. Admin & Analytics 📊  
-- [ ] `GET /admin/stats` – Get travel trends & analytics  
-- [ ] `GET /admin/users` – Fetch all users  
-- [ ] `DELETE /admin/users/{user_id}` – Ban a user  
+## Payments Management
+- [ ] **Make Payment for Itinerary** (`POST /itineraries/{itinerary_id}/payments`)
+- [ ] **Get Payment History** (`GET /users/{user_id}/payments`)
+- [ ] **Get Payment Details** (`GET /payments/{payment_id}`)
+- [ ] **Refund or Cancel Payment** (`DELETE /payments/{payment_id}`)
