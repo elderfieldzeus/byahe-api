@@ -3,7 +3,9 @@ import { CreateUserDto } from 'src/user/dto/createuser.dto';
 import { signInUserDto } from 'src/user/dto/signinuser.dto';
 import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';
+import { SkipAuth } from './decorator/auth.decorator';
 
+@SkipAuth()
 @Controller('auth')
 export class AuthController {
     constructor(
