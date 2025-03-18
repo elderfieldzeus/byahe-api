@@ -8,10 +8,10 @@ import { ItineraryModule } from 'src/itinerary/itinerary.module';
 @Module({
   imports: [
     SequelizeModule.forFeature([Flight]),
-    forwardRef(() => ItineraryModule)
+    forwardRef(() => ItineraryModule),
   ],
   controllers: [FlightController],
   providers: [FlightService],
-  exports: [FlightService]
+  exports: [FlightService],
 })
 export class FlightModule {}

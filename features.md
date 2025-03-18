@@ -20,10 +20,10 @@
 - [x] **Remove Flight from Itinerary** (`DELETE /flight/{flight_id}`)
 
 ## Hotel Booking Management
-- [ ] **Add Hotel Booking** (`POST /itinerary/{itinerary_id}/hotels`)
-- [ ] **Get Hotel Bookings for Itinerary** (`GET /itinerary/{itinerary_id}/hotels`)
-- [ ] **Update Hotel Booking** (`PATCH /hotels/{hotel_id}`)
-- [ ] **Delete Hotel Booking** (`DELETE /hotels/{hotel_id}`)
+- [x] **Add Hotel Booking** (`POST /itinerary/{itinerary_id}/hotel`)
+- [x] **Get Hotel Bookings for Itinerary** (`GET /itinerary/{itinerary_id}/hotel`)
+- [x] **Update Hotel Booking** (`PATCH /hotel/{hotel_id}`)
+- [x] **Delete Hotel Booking** (`DELETE /hotel/{hotel_id}`)
 
 ## Activity Management
 - [ ] **Add Activity** (`POST /itinerary/{itinerary_id}/activities`)

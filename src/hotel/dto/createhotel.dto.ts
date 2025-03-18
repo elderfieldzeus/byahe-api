@@ -1,27 +1,27 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+import { IsDate, IsNumber, IsString } from 'class-validator';
 
-export class UpdateItineraryDto {
+export class CreateHotelDto {
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
-  title: string;
+  name: string;
 
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
-  description: string;
+  location: string;
 
   @ApiProperty()
   @IsDate()
-  @IsNotEmpty()
   @Transform(({ value }) => new Date(value))
-  start_date: Date;
+  check_in: Date;
 
   @ApiProperty()
   @IsDate()
-  @IsNotEmpty()
   @Transform(({ value }) => new Date(value))
-  end_date: Date;
+  check_out: Date;
+
+  @ApiProperty()
+  @IsNumber()
+  price: number;
 }

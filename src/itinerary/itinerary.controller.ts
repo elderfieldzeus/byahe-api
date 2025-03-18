@@ -17,12 +17,16 @@ import { SkipAuth } from 'src/auth/decorator/auth.decorator';
 import { UpdateItineraryDto } from './dto/updateitinerary.dto';
 import { CreateFlightDto } from 'src/flight/dto/createflight.dto';
 import { FlightService } from 'src/flight/flight.service';
+import { HotelService } from 'src/hotel/hotel.service';
+import { CreateHotelDto } from 'src/hotel/dto/createhotel.dto';
 
+@SkipAuth()
 @Controller('itinerary')
 export class ItineraryController {
   constructor(
     private itineraryService: ItineraryService,
-    private flightService: FlightService
+    private flightService: FlightService,
+    private hotelService: HotelService,
   ) {}
 
   @Post()
@@ -55,12 +59,40 @@ export class ItineraryController {
   }
 
   @Post('/:itinerary_id/flight')
-  async createFlight(@Param('itinerary_id', ParseIntPipe) itinerary_id: number, @Body() createFlightDto: CreateFlightDto) {
-    return await this.flightService.createFlightToItinerary(itinerary_id, createFlightDto);
+  async createFlight(
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Body() createFlightDto: CreateFlightDto,
+  ) {
+    return await this.flightService.createFlightToItinerary(
+      itinerary_id,
+      createFlightDto,
+    );
   }
 
   @Get('/:itinerary_id/flight')
-  async getFlights(@Param('itinerary_id', ParseIntPipe) itinerary_id: number, @Query('page', ParseIntPipe) page: number) {
-    return await this.flightService.getFlightsForItinerary(itinerary_id, page);
+  async getFlights(
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Query('page', ParseIntPipe) page: number,
+  ) {
+    return await this.flightService.getFlightsFromItinerary(itinerary_id, page);
+  }
+
+  @Post('/:itinerary_id/hotel')
+  async createHotel(
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Body() CreateHotelDto: CreateHotelDto,
+  ) {
+    return await this.hotelService.createHotelToItinerary(
+      itinerary_id,
+      CreateHotelDto,
+    );
+  }
+
+  @Get('/:itinerary_id/hotel')
+  async getHotels(
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Query('page', ParseIntPipe) page: number,
+  ) {
+    return await this.hotelService.getHotelsFromItinerary(itinerary_id, page);
   }
 }

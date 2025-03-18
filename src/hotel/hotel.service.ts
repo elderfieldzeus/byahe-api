@@ -1,26 +1,25 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Flight } from './flight.model';
 import { Sequelize } from 'sequelize-typescript';
-import { CreateFlightDto } from './dto/createflight.dto';
+import { Hotel } from './hotel.model';
+import { CreateHotelDto } from './dto/createhotel.dto';
 import { ItineraryService } from 'src/itinerary/itinerary.service';
-import { getOffsetFromPage } from 'src/lib/util';
 import { ROW_LIMIT } from 'src/lib/constants';
+import { getOffsetFromPage } from 'src/lib/util';
 
 @Injectable()
-export class FlightService {
+export class HotelService {
   constructor(
     private sequelize: Sequelize,
-    @InjectModel(Flight) private flightModel: typeof Flight,
+    @InjectModel(Hotel) private hotelModel: typeof Hotel,
     private itineraryService: ItineraryService,
   ) {}
 
-  async createFlightToItinerary(
+  async createHotelToItinerary(
     itinerary_id: number,
-    createFlightDto: CreateFlightDto,
+    createHotelDto: CreateHotelDto,
   ) {
-    const itinerary =
-      await this.itineraryService.getItineraryById(itinerary_id);
+    const itinerary = this.itineraryService.getItineraryById(itinerary_id);
 
     if (itinerary === null) {
       throw new HttpException('Invalid Itinerary ID', HttpStatus.BAD_REQUEST);
@@ -28,8 +27,8 @@ export class FlightService {
 
     try {
       return await this.sequelize.transaction(async (t) => {
-        return this.flightModel.create(
-          { ...createFlightDto, itinerary_id },
+        return await this.hotelModel.create(
+          { itinerary_id, ...createHotelDto },
           {
             transaction: t,
           },
@@ -37,14 +36,14 @@ export class FlightService {
       });
     } catch (e) {
       throw new HttpException(
-        'Flight Creation Failed',
+        'Hotel Creation Failed',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
 
-  async getFlightsFromItinerary(itinerary_id: number, page: number) {
-    return await this.flightModel.findAll({
+  async getHotelsFromItinerary(itinerary_id: number, page: number) {
+    return await this.hotelModel.findAll({
       where: {
         itinerary_id,
       },
@@ -53,11 +52,11 @@ export class FlightService {
     });
   }
 
-  async updateFlightById(id: number, createFlightDto: CreateFlightDto) {
+  async updateHotelById(id: number, createHotelDto: CreateHotelDto) {
     try {
       const [affectedCount] = await this.sequelize.transaction(async (t) => {
-        return await this.flightModel.update(
-          { ...createFlightDto },
+        return await this.hotelModel.update(
+          { ...createHotelDto },
           {
             where: {
               id,
@@ -68,22 +67,22 @@ export class FlightService {
       });
 
       if (affectedCount === 0) {
-        throw new HttpException('Invalid Flight ID', HttpStatus.BAD_REQUEST);
+        throw new HttpException('Invalid Itinerary ID', HttpStatus.BAD_REQUEST);
       }
 
-      return { id, ...createFlightDto };
+      return { id, ...createHotelDto };
     } catch (e) {
       throw new HttpException(
-        'Flight Update Failed',
+        'Hotel Update Failed',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
   }
 
-  async deleteFlightById(id: number) {
+  async deleteHotelById(id: number) {
     try {
       const deletedCount = await this.sequelize.transaction(async (t) => {
-        return await this.flightModel.destroy({
+        return await this.hotelModel.destroy({
           where: {
             id,
           },
@@ -92,13 +91,13 @@ export class FlightService {
       });
 
       if (deletedCount === 0) {
-        throw new HttpException('Invalid Flight ID', HttpStatus.BAD_REQUEST);
+        throw new HttpException('Invalid Itinerary ID', HttpStatus.BAD_REQUEST);
       }
 
       return { success: true };
     } catch (e) {
       throw new HttpException(
-        'Flight Deletion Failed',
+        'Hotel Update Failed',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }

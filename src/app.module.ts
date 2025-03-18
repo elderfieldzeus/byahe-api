@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { ItineraryModule } from './itinerary/itinerary.module';
 import { FlightModule } from './flight/flight.module';
+import { HotelModule } from './hotel/hotel.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { FlightModule } from './flight/flight.module';
     UserModule,
     ItineraryModule,
     FlightModule,
+    HotelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

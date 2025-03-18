@@ -8,25 +8,25 @@ import {
 import { Itinerary } from 'src/itinerary/itinerary.model';
 
 @Table
-export class Flight extends Model {
-  @Column
+export class Hotel extends Model {
   @ForeignKey(() => Itinerary)
+  @Column
   itinerary_id: number;
 
   @BelongsTo(() => Itinerary)
   itinerary: Itinerary;
 
   @Column
-  airline: string;
+  name: string;
 
   @Column
-  flight_number: string;
+  location: string;
 
   @Column
-  departure_time: Date;
+  check_in: Date;
 
   @Column
-  arrival_time: Date;
+  check_out: Date;
 
   @Column
   price: number;
