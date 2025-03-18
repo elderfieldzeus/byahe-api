@@ -10,19 +10,24 @@ import {
 import { UserService } from './user.service';
 import { User } from './user.model';
 import { UserResponseDto } from './dto/userresponse.dto';
+import { ItineraryService } from 'src/itinerary/itinerary.service';
+import { SkipAuth } from 'src/auth/decorator/auth.decorator';
 
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private itineraryService: ItineraryService,
+  ) {}
 
-  @Get()
-  async getAllUsers(@Query('page', ParseIntPipe) page: number) {
-    const users = await this.userService.findAllUsers(page);
+  // @Get()
+  // async getAllUsers(@Query('page', ParseIntPipe) page: number) {
+  //   const users = await this.userService.findAllUsers(page);
 
-    const usersResponse = users.map((user) => new UserResponseDto(user));
+  //   const usersResponse = users.map((user) => new UserResponseDto(user));
 
-    return usersResponse;
-  }
+  //   return usersResponse;
+  // }
 
   @Get(':id')
   async getUserById(@Param('id', ParseIntPipe) id: number) {
@@ -33,5 +38,13 @@ export class UserController {
     }
 
     return new UserResponseDto(user);
+  }
+
+  @Get('/:id/itinerary')
+  async getItinerary(
+    @Param('id', ParseIntPipe) id: number,
+    @Query('page', ParseIntPipe) page: number,
+  ) {
+    return await this.itineraryService.getItineraryByUserId(id, page);
   }
 }

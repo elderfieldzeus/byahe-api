@@ -11,6 +11,7 @@ import {
 } from './lib/constants';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { ItineraryModule } from './itinerary/itinerary.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { UserModule } from './user/user.module';
     }),
     AuthModule,
     UserModule,
+    ItineraryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -15,19 +15,11 @@ export class AuthController {
 
   @Post('signup')
   async signup(@Body() createUserDto: CreateUserDto) {
-    try {
-      return await this.userService.create(createUserDto);
-    } catch (e) {
-      throw new HttpException(e.response, e.status);
-    }
+    return await this.userService.create(createUserDto);
   }
 
   @Post('login')
   async signin(@Body() signInUserDto: SignInUserDto) {
-    try {
-      return await this.authService.signIn(signInUserDto);
-    } catch (e) {
-      throw new HttpException(e.response, e.status);
-    }
+    return await this.authService.signIn(signInUserDto);
   }
 }

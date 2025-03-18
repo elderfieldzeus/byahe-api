@@ -5,6 +5,8 @@ import { CreateUserDto } from './dto/createuser.dto';
 import * as bcrypt from 'bcrypt';
 import { Sequelize } from 'sequelize-typescript';
 import { ROW_LIMIT } from 'src/lib/constants';
+import { UserResponseDto } from './dto/userresponse.dto';
+import { getOffsetFromPage } from 'src/lib/util';
 
 @Injectable()
 export class UserService {
@@ -23,21 +25,16 @@ export class UserService {
     const hashPass = await bcrypt.hash(user.password, 10);
 
     try {
-      await this.sequelize.transaction(async (t) => {
-        console.log(
-          await this.userModel.create(
-            { ...user, password: hashPass },
-            {
-              transaction: t,
-            },
-          ),
+      const result = await this.sequelize.transaction(async (t) => {
+        return await this.userModel.create(
+          { ...user, password: hashPass },
+          {
+            transaction: t,
+          },
         );
       });
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...result } = user;
-
-      return result;
+      return new UserResponseDto(result);
     } catch (e) {
       console.error(e);
       throw new HttpException(
@@ -64,10 +61,10 @@ export class UserService {
   }
 
   async findAllUsers(page: number) {
-    const offset = ROW_LIMIT * (page - 1);
+    const offset = getOffsetFromPage(page);
     return await this.userModel.findAll({
       limit: ROW_LIMIT,
-      offset: offset < 0 ? 0 : offset,
+      offset,
     });
   }
 }

@@ -24,9 +24,7 @@ export class AuthService {
     );
 
     if (user === null || !isPasswordCorrect) {
-      throw new UnauthorizedException(
-        user !== null ? 'Invalid Credentials.' : 'meow',
-      );
+      throw new UnauthorizedException('Invalid Credentials.');
     }
 
     const payload = {

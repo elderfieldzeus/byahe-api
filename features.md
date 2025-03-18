@@ -7,11 +7,11 @@
 - [ ] **Update User** (`PATCH /users/{user_id}`)
 
 ## Itinerary Management
-- [ ] **Create Itinerary** (`POST /itineraries`)
-- [ ] **Get User Itineraries** (`GET /users/{user_id}/itineraries`)
-- [ ] **Get Itinerary Details** (`GET /itineraries/{itinerary_id}`)
+- [x] **Create Itinerary** (`POST /itineraries`)
+- [x] **Get User Itineraries** (`GET /users/{user_id}/itineraries`)
+- [x] **Get Itinerary Details** (`GET /itineraries/{itinerary_id}`)
 - [ ] **Update Itinerary** (`PATCH /itineraries/{itinerary_id}`)
-- [ ] **Delete Itinerary** (`DELETE /itineraries/{itinerary_id}`)
+- [x] **Delete Itinerary** (`DELETE /itineraries/{itinerary_id}`)
 
 ## Flights Management
 - [ ] **Add Flight to Itinerary** (`POST /itineraries/{itinerary_id}/flights`)
