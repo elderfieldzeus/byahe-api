@@ -41,14 +41,12 @@ export class ItineraryService {
   }
 
   async getItineraryByUserId(user_id: number, page: number) {
-    const offset = getOffsetFromPage(page);
-
     return await this.itineraryModel.findAll({
       where: {
         user_id,
       },
       limit: ROW_LIMIT,
-      offset,
+      offset: getOffsetFromPage(page),
     });
   }
 

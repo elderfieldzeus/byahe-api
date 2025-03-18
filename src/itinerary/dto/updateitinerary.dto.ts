@@ -3,9 +3,7 @@ import { Transform } from 'class-transformer';
 import {
   IsDate,
   IsNotEmpty,
-  IsNumber,
   IsString,
-  Validate,
 } from 'class-validator';
 
 export class UpdateItineraryDto {
