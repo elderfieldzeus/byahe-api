@@ -19,6 +19,8 @@ import { CreateFlightDto } from 'src/flight/dto/createflight.dto';
 import { FlightService } from 'src/flight/flight.service';
 import { HotelService } from 'src/hotel/hotel.service';
 import { CreateHotelDto } from 'src/hotel/dto/createhotel.dto';
+import { ActivityService } from 'src/activity/activity.service';
+import { CreateActivityDto } from 'src/activity/dto/createactivity.dto';
 
 @SkipAuth()
 @Controller('itinerary')
@@ -27,6 +29,7 @@ export class ItineraryController {
     private itineraryService: ItineraryService,
     private flightService: FlightService,
     private hotelService: HotelService,
+    private activityService: ActivityService,
   ) {}
 
   @Post()
@@ -80,11 +83,11 @@ export class ItineraryController {
   @Post('/:itinerary_id/hotel')
   async createHotel(
     @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
-    @Body() CreateHotelDto: CreateHotelDto,
+    @Body() createHotelDto: CreateHotelDto,
   ) {
     return await this.hotelService.createHotelToItinerary(
       itinerary_id,
-      CreateHotelDto,
+      createHotelDto,
     );
   }
 
@@ -94,5 +97,27 @@ export class ItineraryController {
     @Query('page', ParseIntPipe) page: number,
   ) {
     return await this.hotelService.getHotelsFromItinerary(itinerary_id, page);
+  }
+
+  @Post('/:itinerary_id/activity')
+  async createActivity(
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Body() createActivityDto: CreateActivityDto,
+  ) {
+    return await this.activityService.createActivityToItinerary(
+      itinerary_id,
+      createActivityDto,
+    );
+  }
+
+  @Get('/:itinerary_id/activity')
+  async getActivities(
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Query('page', ParseIntPipe) page: number,
+  ) {
+    return await this.activityService.getActivitiesFromItinerary(
+      itinerary_id,
+      page,
+    );
   }
 }

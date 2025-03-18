@@ -14,6 +14,7 @@ import { UserModule } from './user/user.module';
 import { ItineraryModule } from './itinerary/itinerary.module';
 import { FlightModule } from './flight/flight.module';
 import { HotelModule } from './hotel/hotel.module';
+import { ActivityModule } from './activity/activity.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { HotelModule } from './hotel/hotel.module';
     ItineraryModule,
     FlightModule,
     HotelModule,
+    ActivityModule,
   ],
   controllers: [AppController],
   providers: [AppService],

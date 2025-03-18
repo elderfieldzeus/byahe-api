@@ -6,6 +6,7 @@ import { Itinerary } from './itinerary.model';
 import { UserModule } from 'src/user/user.module';
 import { FlightModule } from 'src/flight/flight.module';
 import { HotelModule } from 'src/hotel/hotel.module';
+import { ActivityModule } from 'src/activity/activity.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { HotelModule } from 'src/hotel/hotel.module';
     forwardRef(() => UserModule),
     forwardRef(() => FlightModule),
     forwardRef(() => HotelModule),
+    forwardRef(() => ActivityModule),
   ],
   controllers: [ItineraryController],
   providers: [ItineraryService],
