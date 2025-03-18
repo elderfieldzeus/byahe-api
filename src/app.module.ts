@@ -15,11 +15,12 @@ import { ItineraryModule } from './itinerary/itinerary.module';
 import { FlightModule } from './flight/flight.module';
 import { HotelModule } from './hotel/hotel.module';
 import { ActivityModule } from './activity/activity.module';
+import { DocumentModule } from './document/document.module';
 
 @Module({
   imports: [
     SequelizeModule.forRoot({
-      dialect: 'mysql',
+      dialect: 'postgres',
       host: SEQUELIZE_HOST,
       port: SEQUELIZE_PORT,
       username: SEQUELIZE_USERNAME,
@@ -33,6 +34,7 @@ import { ActivityModule } from './activity/activity.module';
     FlightModule,
     HotelModule,
     ActivityModule,
+    DocumentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

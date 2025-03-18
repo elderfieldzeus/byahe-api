@@ -11,23 +11,23 @@ import { Itinerary } from 'src/itinerary/itinerary.model';
 export class Hotel extends Model {
   @ForeignKey(() => Itinerary)
   @Column
-  itinerary_id: number;
+  private itinerary_id: number;
 
   @BelongsTo(() => Itinerary)
-  itinerary: Itinerary;
+  private itinerary: Itinerary;
 
   @Column
-  name: string;
+  private name: string;
 
   @Column
-  location: string;
+  private location: string;
 
   @Column
-  check_in: Date;
+  private check_in: Date;
 
   @Column
-  check_out: Date;
+  private check_out: Date;
 
   @Column
-  price: number;
+  private price: number;
 }

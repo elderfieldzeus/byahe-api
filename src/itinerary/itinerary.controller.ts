@@ -10,6 +10,8 @@ import {
   Patch,
   Post,
   Query,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import { CreateItineraryDto } from './dto/createitinerary.dto';
 import { ItineraryService } from './itinerary.service';
@@ -21,6 +23,9 @@ import { HotelService } from 'src/hotel/hotel.service';
 import { CreateHotelDto } from 'src/hotel/dto/createhotel.dto';
 import { ActivityService } from 'src/activity/activity.service';
 import { CreateActivityDto } from 'src/activity/dto/createactivity.dto';
+import { DocumentService } from 'src/document/document.service';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { UploadDocumentDto } from 'src/document/dto/uploaddocument.dto';
 
 @SkipAuth()
 @Controller('itinerary')
@@ -30,6 +35,7 @@ export class ItineraryController {
     private flightService: FlightService,
     private hotelService: HotelService,
     private activityService: ActivityService,
+    private documentService: DocumentService,
   ) {}
 
   @Post()
@@ -116,6 +122,31 @@ export class ItineraryController {
     @Query('page', ParseIntPipe) page: number,
   ) {
     return await this.activityService.getActivitiesFromItinerary(
+      itinerary_id,
+      page,
+    );
+  }
+
+  @Post('/:itinerary_id/document')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadDocument(
+    @UploadedFile('file') file: Express.Multer.File,
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Body() uploadDocumentDto: UploadDocumentDto,
+  ) {
+    return await this.documentService.uploadDocument(
+      itinerary_id,
+      uploadDocumentDto,
+      file,
+    );
+  }
+
+  @Get('/:itinerary_id/document')
+  async getDocuments(
+    @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+    @Query('page', ParseIntPipe) page: number,
+  ) {
+    return await this.documentService.getDocumentsByItineraryId(
       itinerary_id,
       page,
     );

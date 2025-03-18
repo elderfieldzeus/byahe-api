@@ -11,20 +11,20 @@ import { Itinerary } from 'src/itinerary/itinerary.model';
 export class Activity extends Model {
   @Column
   @ForeignKey(() => Itinerary)
-  itinerary_id: number;
+  private itinerary_id: number;
 
   @BelongsTo(() => Itinerary)
-  itinerary: Itinerary;
+  private itinerary: Itinerary;
 
   @Column
-  name: string;
+  private name: string;
 
   @Column
-  location: string;
+  private location: string;
 
   @Column
-  datetime: Date;
+  private datetime: Date;
 
   @Column
-  price: number;
+  private price: number;
 }

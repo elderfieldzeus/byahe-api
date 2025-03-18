@@ -11,23 +11,23 @@ import { Itinerary } from 'src/itinerary/itinerary.model';
 export class Flight extends Model {
   @Column
   @ForeignKey(() => Itinerary)
-  itinerary_id: number;
+  private itinerary_id: number;
 
   @BelongsTo(() => Itinerary)
-  itinerary: Itinerary;
+  private itinerary: Itinerary;
 
   @Column
-  airline: string;
+  private airline: string;
 
   @Column
-  flight_number: string;
+  private flight_number: string;
 
   @Column
-  departure_time: Date;
+  private departure_time: Date;
 
   @Column
-  arrival_time: Date;
+  private arrival_time: Date;
 
   @Column
-  price: number;
+  private price: number;
 }

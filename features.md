@@ -26,15 +26,15 @@
 - [x] **Delete Hotel Booking** (`DELETE /hotel/{hotel_id}`)
 
 ## Activity Management
-- [x] **Add Activity** (`POST /itinerary/{itinerary_id}/activities`)
-- [x] **Get Activities for Itinerary** (`GET /itinerary/{itinerary_id}/activities`)
-- [x] **Update Activity** (`PATCH /activities/{activity_id}`)
-- [x] **Delete Activity** (`DELETE /activities/{activity_id}`)
+- [x] **Add Activity** (`POST /itinerary/{itinerary_id}/activity`)
+- [x] **Get Activities for Itinerary** (`GET /itinerary/{itinerary_id}/activity`)
+- [x] **Update Activity** (`PATCH /activity/{activity_id}`)
+- [x] **Delete Activity** (`DELETE /activity/{activity_id}`)
 
 ## Document Management
-- [ ] **Upload Travel Document** (`POST /itinerary/{itinerary_id}/documents`)
-- [ ] **Get Travel Documents** (`GET /itinerary/{itinerary_id}/documents`)
-- [ ] **Delete Travel Document** (`DELETE /documents/{document_id}`)
+- [x] **Upload Travel Document** (`POST /itinerary/{itinerary_id}/document`)
+- [x] **Get Travel Documents** (`GET /itinerary/{itinerary_id}/document`)
+- [x] **Delete Travel Document** (`DELETE /document/{document_id}`)
 
 ## Payments Management
 - [ ] **Make Payment for Itinerary** (`POST /itinerary/{itinerary_id}/payments`)

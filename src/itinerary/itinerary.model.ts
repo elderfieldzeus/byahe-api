@@ -11,20 +11,20 @@ import { User } from 'src/user/user.model';
 export class Itinerary extends Model {
   @Column
   @ForeignKey(() => User)
-  user_id: number;
+  private user_id: number;
 
   @BelongsTo(() => User)
-  user: User;
+  private user: User;
 
   @Column
-  title: string;
+  private title: string;
 
   @Column
-  description: string;
+  private description: string;
 
   @Column
-  start_date: Date;
+  private start_date: Date;
 
   @Column
-  end_date: Date;
+  private end_date: Date;
 }
