@@ -9,7 +9,7 @@ const sequelize = new Sequelize('postgres://admin:admin@localhost:5432/mydb', {
   dialectModule: require('pg')
 });
 
-async function bootstrap() {
+export default async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   console.log(SEQUELIZE_USERNAME);
