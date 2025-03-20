@@ -15,17 +15,17 @@ import {
 } from '@nestjs/common';
 import { CreateItineraryDto } from './dto/createitinerary.dto';
 import { ItineraryService } from './itinerary.service';
-import { SkipAuth } from 'src/auth/decorator/auth.decorator';
+import { SkipAuth } from '../auth/decorator/auth.decorator';
 import { UpdateItineraryDto } from './dto/updateitinerary.dto';
-import { CreateFlightDto } from 'src/flight/dto/createflight.dto';
-import { FlightService } from 'src/flight/flight.service';
-import { HotelService } from 'src/hotel/hotel.service';
-import { CreateHotelDto } from 'src/hotel/dto/createhotel.dto';
-import { ActivityService } from 'src/activity/activity.service';
-import { CreateActivityDto } from 'src/activity/dto/createactivity.dto';
-import { DocumentService } from 'src/document/document.service';
+import { CreateFlightDto } from '../flight/dto/createflight.dto';
+import { FlightService } from '../flight/flight.service';
+import { HotelService } from '../hotel/hotel.service';
+import { CreateHotelDto } from '../hotel/dto/createhotel.dto';
+import { ActivityService } from '../activity/activity.service';
+import { CreateActivityDto } from '../activity/dto/createactivity.dto';
+import { DocumentService } from '../document/document.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { UploadDocumentDto } from 'src/document/dto/uploaddocument.dto';
+import { UploadDocumentDto } from '../document/dto/uploaddocument.dto';
 
 @SkipAuth()
 @Controller('itinerary')

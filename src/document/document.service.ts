@@ -5,15 +5,15 @@ import {
   SUPABASE_API_KEY,
   SUPABASE_BUCKET,
   SUPABASE_URL,
-} from 'src/lib/constants';
+} from '../lib/constants';
 import * as fs from 'fs';
 import { UploadDocumentDto } from './dto/uploaddocument.dto';
 import { Sequelize } from 'sequelize-typescript';
 import { InjectModel } from '@nestjs/sequelize';
 import { Document } from './document.model';
-import { ItineraryService } from 'src/itinerary/itinerary.service';
-import { UserService } from 'src/user/user.service';
-import { getOffsetFromPage } from 'src/lib/util';
+import { ItineraryService } from '../itinerary/itinerary.service';
+import { UserService } from '../user/user.service';
+import { getOffsetFromPage } from '../lib/util';
 import { DocumentResponseDto } from './dto/documentresponse.dto';
 
 @Injectable()

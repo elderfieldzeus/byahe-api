@@ -2,10 +2,10 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { Activity } from './activity.model';
-import { ItineraryService } from 'src/itinerary/itinerary.service';
+import { ItineraryService } from '../itinerary/itinerary.service';
 import { CreateActivityDto } from './dto/createactivity.dto';
-import { ROW_LIMIT } from 'src/lib/constants';
-import { getOffsetFromPage } from 'src/lib/util';
+import { ROW_LIMIT } from '../lib/constants';
+import { getOffsetFromPage } from '../lib/util';
 
 @Injectable()
 export class ActivityService {

@@ -3,7 +3,7 @@ import { ActivityController } from './activity.controller';
 import { ActivityService } from './activity.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Activity } from './activity.model';
-import { ItineraryModule } from 'src/itinerary/itinerary.module';
+import { ItineraryModule } from '../itinerary/itinerary.module';
 
 @Module({
   imports: [

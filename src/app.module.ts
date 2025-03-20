@@ -16,6 +16,7 @@ import { FlightModule } from './flight/flight.module';
 import { HotelModule } from './hotel/hotel.module';
 import { ActivityModule } from './activity/activity.module';
 import { DocumentModule } from './document/document.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { DocumentModule } from './document/document.module';
     HotelModule,
     ActivityModule,
     DocumentModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

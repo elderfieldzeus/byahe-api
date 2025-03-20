@@ -5,7 +5,7 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
-import { Itinerary } from 'src/itinerary/itinerary.model';
+import { Itinerary } from '../itinerary/itinerary.model';
 
 @Table
 export class Flight extends Model {

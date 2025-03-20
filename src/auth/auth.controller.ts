@@ -1,7 +1,7 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
-import { CreateUserDto } from 'src/user/dto/createuser.dto';
-import { SignInUserDto } from 'src/user/dto/signinuser.dto';
-import { UserService } from 'src/user/user.service';
+import { CreateUserDto } from '../user/dto/createuser.dto';
+import { SignInUserDto } from '../user/dto/signinuser.dto';
+import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { SkipAuth } from './decorator/auth.decorator';
 

@@ -1,5 +1,5 @@
 import { Controller, Delete, Param, ParseIntPipe } from '@nestjs/common';
-import { SkipAuth } from 'src/auth/decorator/auth.decorator';
+import { SkipAuth } from '../auth/decorator/auth.decorator';
 import { DocumentService } from './document.service';
 
 @SkipAuth()

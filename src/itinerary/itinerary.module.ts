@@ -3,11 +3,11 @@ import { ItineraryController } from './itinerary.controller';
 import { ItineraryService } from './itinerary.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Itinerary } from './itinerary.model';
-import { UserModule } from 'src/user/user.module';
-import { FlightModule } from 'src/flight/flight.module';
-import { HotelModule } from 'src/hotel/hotel.module';
-import { ActivityModule } from 'src/activity/activity.module';
-import { DocumentModule } from 'src/document/document.module';
+import { UserModule } from '../user/user.module';
+import { FlightModule } from '../flight/flight.module';
+import { HotelModule } from '../hotel/hotel.module';
+import { ActivityModule } from '../activity/activity.module';
+import { DocumentModule } from '../document/document.module';
 
 @Module({
   imports: [

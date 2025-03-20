@@ -6,9 +6,9 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
-import { Itinerary } from 'src/itinerary/itinerary.model';
-import { UploadEnum } from 'src/types/enum/upload.enum';
-import { User } from 'src/user/user.model';
+import { Itinerary } from '../itinerary/itinerary.model';
+import { UploadEnum } from '../types/enum/upload.enum';
+import { User } from '../user/user.model';
 
 @Table
 export class Document extends Model {

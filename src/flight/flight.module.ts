@@ -3,7 +3,7 @@ import { FlightController } from './flight.controller';
 import { FlightService } from './flight.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Flight } from './flight.model';
-import { ItineraryModule } from 'src/itinerary/itinerary.module';
+import { ItineraryModule } from '../itinerary/itinerary.module';
 
 @Module({
   imports: [

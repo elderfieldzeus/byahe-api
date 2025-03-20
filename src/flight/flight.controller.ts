@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { CreateFlightDto } from './dto/createflight.dto';
 import { FlightService } from './flight.service';
-import { SkipAuth } from 'src/auth/decorator/auth.decorator';
+import { SkipAuth } from '../auth/decorator/auth.decorator';
 
 @Controller('flight')
 export class FlightController {

@@ -3,7 +3,7 @@ import { HotelController } from './hotel.controller';
 import { HotelService } from './hotel.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Hotel } from './hotel.model';
-import { ItineraryModule } from 'src/itinerary/itinerary.module';
+import { ItineraryModule } from '../itinerary/itinerary.module';
 
 @Module({
   imports: [

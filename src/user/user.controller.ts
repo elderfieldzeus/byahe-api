@@ -10,8 +10,8 @@ import {
 import { UserService } from './user.service';
 import { User } from './user.model';
 import { UserResponseDto } from './dto/userresponse.dto';
-import { ItineraryService } from 'src/itinerary/itinerary.service';
-import { SkipAuth } from 'src/auth/decorator/auth.decorator';
+import { ItineraryService } from '../itinerary/itinerary.service';
+import { SkipAuth } from '../auth/decorator/auth.decorator';
 
 @Controller('user')
 export class UserController {

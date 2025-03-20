@@ -3,9 +3,9 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { Itinerary } from './itinerary.model';
 import { CreateItineraryDto } from './dto/createitinerary.dto';
-import { UserService } from 'src/user/user.service';
-import { ROW_LIMIT } from 'src/lib/constants';
-import { getOffsetFromPage } from 'src/lib/util';
+import { UserService } from '../user/user.service';
+import { ROW_LIMIT } from '../lib/constants';
+import { getOffsetFromPage } from '../lib/util';
 import { UpdateItineraryDto } from './dto/updateitinerary.dto';
 
 @Injectable()

@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { ActivityService } from './activity.service';
 import { CreateActivityDto } from './dto/createactivity.dto';
-import { SkipAuth } from 'src/auth/decorator/auth.decorator';
+import { SkipAuth } from '../auth/decorator/auth.decorator';
 
 @SkipAuth()
 @Controller('activity')

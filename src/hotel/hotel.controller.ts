@@ -6,7 +6,7 @@ import {
   ParseIntPipe,
   Patch,
 } from '@nestjs/common';
-import { SkipAuth } from 'src/auth/decorator/auth.decorator';
+import { SkipAuth } from '../auth/decorator/auth.decorator';
 import { HotelService } from './hotel.service';
 import { CreateHotelDto } from './dto/createhotel.dto';
 

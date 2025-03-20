@@ -3,9 +3,9 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Flight } from './flight.model';
 import { Sequelize } from 'sequelize-typescript';
 import { CreateFlightDto } from './dto/createflight.dto';
-import { ItineraryService } from 'src/itinerary/itinerary.service';
-import { getOffsetFromPage } from 'src/lib/util';
-import { ROW_LIMIT } from 'src/lib/constants';
+import { ItineraryService } from '../itinerary/itinerary.service';
+import { getOffsetFromPage } from '../lib/util';
+import { ROW_LIMIT } from '../lib/constants';
 
 @Injectable()
 export class FlightService {

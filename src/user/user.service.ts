@@ -4,9 +4,9 @@ import { User } from './user.model';
 import { CreateUserDto } from './dto/createuser.dto';
 import * as bcrypt from 'bcrypt';
 import { Sequelize } from 'sequelize-typescript';
-import { ROW_LIMIT } from 'src/lib/constants';
+import { ROW_LIMIT } from '../lib/constants';
 import { UserResponseDto } from './dto/userresponse.dto';
-import { getOffsetFromPage } from 'src/lib/util';
+import { getOffsetFromPage } from '../lib/util';
 
 @Injectable()
 export class UserService {

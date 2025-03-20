@@ -3,8 +3,8 @@ import { DocumentService } from './document.service';
 import { DocumentController } from './document.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Document } from './document.model';
-import { ItineraryModule } from 'src/itinerary/itinerary.module';
-import { UserModule } from 'src/user/user.module';
+import { ItineraryModule } from '../itinerary/itinerary.module';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
