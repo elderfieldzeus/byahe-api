@@ -5,10 +5,8 @@ import { Payment } from './payment.model';
 
 @Injectable()
 export class PaymentService {
-    constructor(
-        private sequelize: Sequelize,
-        @InjectModel(Payment) private paymentModel: typeof Payment
-    ) {}
-
-    
+  constructor(
+    private sequelize: Sequelize,
+    @InjectModel(Payment) private paymentModel: typeof Payment,
+  ) {}
 }

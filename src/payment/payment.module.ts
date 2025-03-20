@@ -5,10 +5,8 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Payment } from './payment.model';
 
 @Module({
-  imports: [
-    SequelizeModule.forFeature([Payment])
-  ],
+  imports: [SequelizeModule.forFeature([Payment])],
   controllers: [PaymentController],
-  providers: [PaymentService]
+  providers: [PaymentService],
 })
 export class PaymentModule {}

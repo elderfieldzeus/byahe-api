@@ -1,5 +1,5 @@
 export enum PaymentMethodEnum {
-    ONLINE = "online",
-    CASH = "cash",
-    CARD = "card"
+  ONLINE = 'online',
+  CASH = 'cash',
+  CARD = 'card',
 }

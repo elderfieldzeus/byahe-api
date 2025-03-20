@@ -10,6 +10,8 @@ export const SEQUELIZE_USERNAME = process.env.SQL_USERNAME ?? 'root';
 export const SEQUELIZE_PASSWORD = process.env.SQL_PASSWORD ?? '';
 export const SEQUELIZE_DATABASE = process.env.SQL_DATABASE ?? 'byahe_db';
 
+export const DOCUMENT_DIRECTORY = process.env.DOCUMENT_DIRECTORY ?? './uploads';
+
 export const SUPABASE_URL = process.env.SUPABASE_URL ?? '';
 export const SUPABASE_API_KEY = process.env.SUPABASE_API_KEY ?? '';
 export const SUPABASE_BUCKET = 'uploads';

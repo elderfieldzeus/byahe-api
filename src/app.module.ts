@@ -21,14 +21,13 @@ import { PaymentModule } from './payment/payment.module';
 @Module({
   imports: [
     SequelizeModule.forRoot({
-      dialect: 'postgres',
+      dialect: 'mysql',
       host: SEQUELIZE_HOST,
       port: SEQUELIZE_PORT,
       username: SEQUELIZE_USERNAME,
       password: SEQUELIZE_PASSWORD,
       database: SEQUELIZE_DATABASE,
       autoLoadModels: true,
-      dialectModule: require("pg")
     }),
     AuthModule,
     UserModule,

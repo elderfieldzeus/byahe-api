@@ -26,6 +26,9 @@ import { CreateActivityDto } from '../activity/dto/createactivity.dto';
 import { DocumentService } from '../document/document.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadDocumentDto } from '../document/dto/uploaddocument.dto';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
+import { DOCUMENT_DIRECTORY } from 'src/lib/constants';
 
 @SkipAuth()
 @Controller('itinerary')
@@ -81,7 +84,7 @@ export class ItineraryController {
   @Get('/:itinerary_id/flight')
   async getFlights(
     @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
-    @Query('page', ParseIntPipe) page: number,
+    @Query('page', new ParseIntPipe({ optional: true })) page: number = 1,
   ) {
     return await this.flightService.getFlightsFromItinerary(itinerary_id, page);
   }
@@ -100,7 +103,7 @@ export class ItineraryController {
   @Get('/:itinerary_id/hotel')
   async getHotels(
     @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
-    @Query('page', ParseIntPipe) page: number,
+    @Query('page', new ParseIntPipe({ optional: true })) page: number = 1,
   ) {
     return await this.hotelService.getHotelsFromItinerary(itinerary_id, page);
   }
@@ -119,7 +122,7 @@ export class ItineraryController {
   @Get('/:itinerary_id/activity')
   async getActivities(
     @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
-    @Query('page', ParseIntPipe) page: number,
+    @Query('page', new ParseIntPipe({ optional: true })) page: number = 1,
   ) {
     return await this.activityService.getActivitiesFromItinerary(
       itinerary_id,
@@ -127,24 +130,61 @@ export class ItineraryController {
     );
   }
 
+  // @Post('/:itinerary_id/document')
+  // @UseInterceptors(FileInterceptor('file'))
+  // async uploadDocument(
+  //   @UploadedFile('file') file: Express.Multer.File,
+  //   @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+  //   @Body() uploadDocumentDto: UploadDocumentDto,
+  // ) {
+  //   return await this.documentService.uploadDocumentSupabase(
+  //     itinerary_id,
+  //     uploadDocumentDto,
+  //     file,
+  //   );
+  // }
+
+  // @Get('/:itinerary_id/document')
+  // async getDocuments(
+  //   @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
+  //   @Query('page', ParseIntPipe) page: number,
+  // ) {
+  //   return await this.documentService.getDocumentsByItineraryIdSupabase(
+  //     itinerary_id,
+  //     page,
+  //   );
+  // }
+
   @Post('/:itinerary_id/document')
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadDocument(
-    @UploadedFile('file') file: Express.Multer.File,
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: DOCUMENT_DIRECTORY,
+        filename: (req, file, cb) => {
+          // Rename file with timestamp + original extension
+          const uniqueSuffix =
+            Date.now() + '-' + Math.round(Math.random() * 1e9);
+          cb(null, uniqueSuffix + extname(file.originalname));
+        },
+      }),
+    }),
+  )
+  async uploadFile(
     @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
     @Body() uploadDocumentDto: UploadDocumentDto,
+    @UploadedFile() file: Express.Multer.File,
   ) {
     return await this.documentService.uploadDocument(
       itinerary_id,
       uploadDocumentDto,
-      file,
+      file.filename,
     );
   }
 
   @Get('/:itinerary_id/document')
   async getDocuments(
     @Param('itinerary_id', ParseIntPipe) itinerary_id: number,
-    @Query('page', ParseIntPipe) page: number,
+    @Query('page', new ParseIntPipe({ optional: true })) page: number = 1,
   ) {
     return await this.documentService.getDocumentsByItineraryId(
       itinerary_id,
