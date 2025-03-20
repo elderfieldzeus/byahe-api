@@ -28,6 +28,7 @@ import { PaymentModule } from './payment/payment.module';
       password: SEQUELIZE_PASSWORD,
       database: SEQUELIZE_DATABASE,
       autoLoadModels: true,
+      dialectModule: require("pg")
     }),
     AuthModule,
     UserModule,
