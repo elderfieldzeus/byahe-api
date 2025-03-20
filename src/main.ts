@@ -3,6 +3,11 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import { SEQUELIZE_USERNAME } from './lib/constants';
+import { Sequelize } from 'sequelize-typescript';
+
+const sequelize = new Sequelize('postgres://admin:admin@localhost:5432/mydb', {
+  dialectModule: require('pg')
+});
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
