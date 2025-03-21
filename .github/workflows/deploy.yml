@@ -25,6 +25,8 @@ jobs:
 
             npm i
             
-            npx pm2 restart byahe-api || npx pm2 start npm --name 'byahe-api' -- npm run start:prod
+            npx pm2 delete byahe-api || true
+
+            npx pm2 start npm --name 'byahe-api' -- start
             
             npx pm2 save
